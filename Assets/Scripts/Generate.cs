@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class Generate : MonoBehaviour
 {
-
-    bool create = false;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject[] groundToGenerate;
+    float lastPos = 68.8f;
+    float playerPos;
+    void FixedUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!create)
-        {
-            create = true;
             StartCoroutine(GenerateGround());
-        }
     }
 
     IEnumerator GenerateGround()
     {
-        yield return new WaitForSeconds(2);
-        create = false;
+        playerPos = lastPos - GameObject.FindWithTag("Player").transform.position.x;
+        if (playerPos <= 100)
+        {
+        Instantiate(groundToGenerate[Random.Range(0, 3)], new Vector3(lastPos, 0f, 0f), Quaternion.identity);
+        lastPos += 17.2f;
+        yield return new WaitForSeconds(1f);
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float Speed = 25f;
+    [SerializeField] private float Speed = 5f;
     bool Landed = true;
     Rigidbody rb;
 
@@ -12,19 +12,16 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-    private void FixedUpdate()
+    private void Update()
     {
-        Vector3 playerPos = transform.position;
-        float Horizontal = Input.GetAxisRaw("Horizontal");
+        //run 
+        transform.Translate(Vector3.right * Time.deltaTime * Speed, Space.World);
+        //jump
+        bool jumpKey = (Landed) && 
+            Input.GetKey(KeyCode.Space) || 
+            Input.GetKey(KeyCode.W) || 
+            Input.GetKey(KeyCode.UpArrow);
 
-        if (Horizontal != 0)
-        {
-            playerPos.x += Horizontal * Time.deltaTime * Speed;
-            transform.position = playerPos;
-
-        }
-
-        bool jumpKey = (Landed) && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow));
         if (jumpKey)
         {
             rb.AddForce(new Vector3(0f, 33f, 0f), ForceMode.Impulse);
