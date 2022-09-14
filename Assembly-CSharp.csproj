@@ -57,9 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Generate.cs" />
     <Compile Include="Assets\Scripts\CameraView.cs" />
     <Compile Include="Assets\Scripts\Interface.cs" />
+    <Compile Include="Assets\Scripts\Generate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Objects\Materials\Shaders\Vertex_Color_Unlit.shader" />
