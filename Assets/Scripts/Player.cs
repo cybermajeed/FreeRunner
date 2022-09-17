@@ -18,9 +18,8 @@ public class Player : MonoBehaviour
         transform.Translate(Vector3.right * Time.deltaTime * Speed, Space.World);
         //jump
         bool jumpKey = (Landed) && 
-            Input.GetKey(KeyCode.Space) || 
-            Input.GetKey(KeyCode.W) || 
-            Input.GetKey(KeyCode.UpArrow);
+            (Input.GetKey(KeyCode.Space) || 
+            Input.GetKey(KeyCode.UpArrow));
 
         if (jumpKey)
         {
